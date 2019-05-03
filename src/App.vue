@@ -4,6 +4,8 @@
     NOUVELLE PARTIE
   </button>
   <hr>
+  <h4>{{ score }}</h4>
+  <hr>
   <div>
     <span class="carre" @click="selectSquare('hautGauche')" :class="{ bleu: hautGauche }"></span>
     <span class="carre" @click="selectSquare('hautDroite')" :class="{ rouge: hautDroite }"></span>
@@ -30,6 +32,12 @@ export default {
       sequence: [],
       tmp: [],
       squareMapping: ['hautGauche', 'hautDroite', 'basGauche', 'basDroite']
+    }
+  },
+  computed: {
+    score() {
+        const value = this.sequence.length - 1
+        return (value < 0) ? `Score : 0` : `Score : ${ value }`
     }
   },
   methods: {
